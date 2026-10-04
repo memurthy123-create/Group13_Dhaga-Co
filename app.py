@@ -16,7 +16,7 @@ from supabase import create_client
 # Constants (the rules of the system live here)
 # ----------------------------------------------------------------------------
 # All business rules live in guardrails.py (see GUARDRAILS.md)
-from guardrails import (MAX_ATTEMPTS, CONFIRM, RESLOT, CHAT_STATUS, CONFIRMED_STATUS,
+from guardrails import (MAX_ATTEMPTS, CONFIRM, RESLOT, CHAT_STATUS, CONFIRMED_STATUS, HOLD_STATUSES,
                         is_eligible, can_send, proposed_slot, decide)
 
 DEMO_BATCH = 20        # demo: how many PLACED orders are moved to READY_TO_SHIP per click
@@ -190,10 +190,11 @@ def notify_support(order_id, issue_type):
     say(order_id, "notice", f"🎫 Support team notified ({issue_type})")
 
 
-def hold_order(order_id, issue_type):
-    """Guardrail: anything that is not a clean YES ends here. Never auto-cancel, never ship."""
-    set_order_status(order_id, "ON_HOLD")
-    say(order_id, "notice", "⏸️ Order moved to HOLD")
+def hold_order(order_id, issue_type, status="ON_HOLD"):
+    """Guardrail: anything that is not a clean YES ends here. Never auto-cancel, never ship.
+    status is ON_HOLD, or DELIVERY_ON_HOLD when the customer asked to cancel."""
+    set_order_status(order_id, status)
+    say(order_id, "notice", f"⏸️ Order moved to {status.replace('_', ' ')}")
     notify_support(order_id, issue_type)
 
 
@@ -298,7 +299,7 @@ def process_response(order, conf, response, other_text=None, no_reason=None):
     else:                                               # HOLD: always visible, always a ticket
         reason = d["reason"]
         if reason == "ADDRESS_REJECTED":
-            say(oid, "bot", "Thanks. Our support team will contact you to correct the address.")
+            say(oid, "bot", "Thanks.Please change your address in the App ""myApp/Profile"". Our support team will contact you to correct the address.")
             say(oid, "notice", "⚠️ Address reported incorrect by customer")
             log_failure(oid, "ADDRESS_REJECTED", "Address reported incorrect by customer. "
                         "Order moved to HOLD, support notified.", conf["attempt_number"])
@@ -317,7 +318,7 @@ def process_response(order, conf, response, other_text=None, no_reason=None):
                         "Order moved to HOLD, support notified.", conf["attempt_number"])
         else:
             say(oid, "bot", "Thanks for your message. Our support team will get back to you.")
-        hold_order(oid, d["ticket"])
+        hold_order(oid, d["ticket"], d["order_status"])
 
 
 # ----------------------------------------------------------------------------
@@ -326,6 +327,7 @@ def process_response(order, conf, response, other_text=None, no_reason=None):
 BADGE_COLORS = {
     "PLACED": "#6b7280", "READY_TO_SHIP": "#2563eb", "ON_HOLD": "#dc2626",
     "SHIPPED": "#059669", "CANCEL_REQUESTED": "#b45309", "OUT_FOR_DELIVERY": "#0d9488",
+    "DELIVERY_ON_HOLD": "#b91c1c",
     "CONFIRMED": "#059669", "AWAITING REPLY": "#d97706", "RETRY DUE": "#7c3aed",
     "ESCALATED": "#dc2626", "COD": "#92400e", "PREPAID": "#0f766e",
 }
@@ -440,6 +442,7 @@ tiles = [
     ("Ready to ship", count_rows("orders", order_status="READY_TO_SHIP")),
     ("Out for delivery", count_rows("orders", order_status="OUT_FOR_DELIVERY")),
     ("On hold", count_rows("orders", order_status="ON_HOLD")),
+    ("Delivery on hold", count_rows("orders", order_status="DELIVERY_ON_HOLD")),
     ("Open support tickets", count_rows("support_tickets", status="OPEN")),
 ]
 # Clicking a tile loads its list below: an order-status filter, or the tickets list
@@ -448,6 +451,7 @@ TILE_FILTERS = {
     "Ready to ship": "READY_TO_SHIP",
     "Out for delivery": "OUT_FOR_DELIVERY",
     "On hold": "ON_HOLD",
+    "Delivery on hold": "DELIVERY_ON_HOLD",
 }
 st.session_state.setdefault("show_open_tickets", False)
 # Each tile is a real button styled as a card: the number is the button text,
@@ -553,7 +557,8 @@ with left:
     if "pending_status" in st.session_state:
         st.session_state.f_status = st.session_state.pop("pending_status")
     status = f[0].selectbox("Order status", ["All", "PLACED", "READY_TO_SHIP", "OUT_FOR_DELIVERY",
-                                             "ON_HOLD", "SHIPPED", "CANCEL_REQUESTED"], key="f_status")
+                                             "ON_HOLD", "DELIVERY_ON_HOLD", "SHIPPED",
+                                             "CANCEL_REQUESTED"], key="f_status")
     search = f[1].text_input("Search order ID or customer name", key="f_search")
 
     # reset to page 1 whenever a filter changes
@@ -677,8 +682,9 @@ with right:
                        f"Delivery: {slot_label(last['timeslot'])}")
 
         elif not is_eligible(order):
-            if order["order_status"] == "ON_HOLD":
-                st.error("Order is ON HOLD. Waiting for the support team (manual action).")
+            if order["order_status"] in HOLD_STATUSES:
+                st.error(f"Order is {order['order_status'].replace('_', ' ')}. "
+                         "Waiting for the support team (manual action).")
             elif order["payment_mode"] != "COD":
                 st.info("This is a PREPAID order. Confirmation messages are sent only for "
                         "Cash-on-Delivery orders.")

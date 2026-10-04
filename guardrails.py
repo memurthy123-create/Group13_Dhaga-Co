@@ -19,6 +19,8 @@ SLA_MIN_DAYS, SLA_MAX_DAYS = 4, 7                         # G7: delivery = creat
 CHAT_STATUS = "READY_TO_SHIP"          # only these orders get the confirmation chat
 CONFIRMED_STATUS = "OUT_FOR_DELIVERY"  # where a confirmed order moves to
 HOLD_STATUS = "ON_HOLD"
+CANCEL_HOLD_STATUS = "DELIVERY_ON_HOLD"   # customer asked to cancel: delivery held for support
+HOLD_STATUSES = {HOLD_STATUS, CANCEL_HOLD_STATUS}
 
 VALID_RESPONSES = {"YES", "NO", "CANCEL", "OTHER", "NO_RESPONSE"}
 NO_REASONS = {"ADDRESS", "TIMESLOT"}   # what the customer can pick after NO
@@ -92,8 +94,9 @@ def decide(response, attempt_number, no_reason=None):
     if response not in VALID_RESPONSES:
         response = "OTHER"                                   # G4: never auto-process
 
-    def result(action, conf_status, reason, ticket=None, address_confirmed=None):
-        order_status = {CONFIRM: CONFIRMED_STATUS, HOLD: HOLD_STATUS}.get(action)
+    def result(action, conf_status, reason, ticket=None, address_confirmed=None,
+               hold_status=HOLD_STATUS):
+        order_status = {CONFIRM: CONFIRMED_STATUS, HOLD: hold_status}.get(action)
         return {"response": response, "action": action, "conf_status": conf_status,
                 "order_status": order_status, "ticket": ticket,
                 "address_confirmed": address_confirmed, "reason": reason}
@@ -110,7 +113,8 @@ def decide(response, attempt_number, no_reason=None):
         return result(HOLD, "ESCALATED", "MAX_ATTEMPTS", ticket="NO_CONFIRMATION")     # G3
 
     if response == "CANCEL":                                 # G1: no auto-cancellation
-        return result(HOLD, "ESCALATED", "CANCEL", ticket="CANCEL_REQUEST")
+        return result(HOLD, "ESCALATED", "CANCEL", ticket="CANCEL_REQUEST",
+                      hold_status=CANCEL_HOLD_STATUS)
 
     if response == "NO_RESPONSE":                            # G2: no response = no shipment
         return result(HOLD, "ESCALATED", "NO_RESPONSE", ticket="NO_CONFIRMATION")
