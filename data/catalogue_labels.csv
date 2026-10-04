@@ -1,0 +1,61 @@
+sku,expected_colour_family,expected_fabric,expected_size_label
+SKU-001,Blue,Cotton,M
+SKU-002,Blue,Cotton,M
+SKU-003,Blue,Blend,XXL
+SKU-004,Red,Linen,S
+SKU-005,Black,Polyester,XL
+SKU-006,Green,Viscose,L
+SKU-007,Unknown,Unknown,Vendor Specific
+SKU-008,Pink,Silk,One Size
+SKU-009,Unknown,Unknown,Unknown
+SKU-010,Blue,Cotton,S
+SKU-011,Blue,Cotton,M
+SKU-012,Blue,Cotton,M
+SKU-013,Blue,Blend,XXL
+SKU-014,Red,Linen,S
+SKU-015,Black,Polyester,XL
+SKU-016,Green,Viscose,L
+SKU-017,Unknown,Unknown,Vendor Specific
+SKU-018,Pink,Silk,One Size
+SKU-019,Unknown,Unknown,Unknown
+SKU-020,Blue,Cotton,S
+SKU-021,Blue,Cotton,M
+SKU-022,Blue,Cotton,M
+SKU-023,Blue,Blend,XXL
+SKU-024,Red,Linen,S
+SKU-025,Black,Polyester,XL
+SKU-026,Green,Viscose,L
+SKU-027,Unknown,Unknown,Vendor Specific
+SKU-028,Pink,Silk,One Size
+SKU-029,Unknown,Unknown,Unknown
+SKU-030,Blue,Cotton,S
+SKU-031,Blue,Cotton,M
+SKU-032,Blue,Cotton,M
+SKU-033,Blue,Blend,XXL
+SKU-034,Red,Linen,S
+SKU-035,Black,Polyester,XL
+SKU-036,Green,Viscose,L
+SKU-037,Unknown,Unknown,Vendor Specific
+SKU-038,Pink,Silk,One Size
+SKU-039,Unknown,Unknown,Unknown
+SKU-040,Blue,Cotton,S
+SKU-041,Blue,Cotton,M
+SKU-042,Blue,Cotton,M
+SKU-043,Blue,Blend,XXL
+SKU-044,Red,Linen,S
+SKU-045,Black,Polyester,XL
+SKU-046,Green,Viscose,L
+SKU-047,Unknown,Unknown,Vendor Specific
+SKU-048,Pink,Silk,One Size
+SKU-049,Unknown,Unknown,Unknown
+SKU-050,Blue,Cotton,S
+SKU-051,Blue,Cotton,M
+SKU-052,Blue,Cotton,M
+SKU-053,Blue,Blend,XXL
+SKU-054,Red,Linen,S
+SKU-055,Black,Polyester,XL
+SKU-056,Green,Viscose,L
+SKU-057,Unknown,Unknown,Vendor Specific
+SKU-058,Pink,Silk,One Size
+SKU-059,Unknown,Unknown,Unknown
+SKU-060,Blue,Cotton,S

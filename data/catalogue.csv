@@ -1,0 +1,61 @@
+sku,vendor_id,product_name,colour_raw,fabric_raw,size_raw,size_chart_id,chest_cm
+SKU-001,VENDOR-1,Everyday kurti,blu,cottn,medium,CHART-1,86
+SKU-002,VENDOR-2,Casual shirt,Navy blue,100% cotton,M,CHART-2,89
+SKU-003,VENDOR-3,Kids top,Indigo,60% cotton / 40% polyester,2XL,CHART-3,92
+SKU-004,VENDOR-4,Everyday kurti,Lal,linen,small,CHART-4,95
+SKU-005,VENDOR-5,Casual shirt,blk,poly,XL,CHART-5,98
+SKU-006,VENDOR-6,Kids top,Green,viscose,large,CHART-6,101
+SKU-007,VENDOR-1,Everyday kurti,mystery shade,premium soft material,38,CHART-1,86
+SKU-008,VENDOR-2,Casual shirt,Pink,silk,free size,CHART-2,89
+SKU-009,VENDOR-3,Kids top,,,,CHART-3,92
+SKU-010,VENDOR-4,Everyday kurti,नीला,cotton,S,CHART-4,95
+SKU-011,VENDOR-5,Casual shirt,blu,cottn,medium,CHART-5,98
+SKU-012,VENDOR-6,Kids top,Navy blue,100% cotton,M,CHART-6,101
+SKU-013,VENDOR-1,Everyday kurti,Indigo,60% cotton / 40% polyester,2XL,CHART-1,86
+SKU-014,VENDOR-2,Casual shirt,Lal,linen,small,CHART-2,89
+SKU-015,VENDOR-3,Kids top,blk,poly,XL,CHART-3,92
+SKU-016,VENDOR-4,Everyday kurti,Green,viscose,large,CHART-4,95
+SKU-017,VENDOR-5,Casual shirt,mystery shade,premium soft material,38,CHART-5,98
+SKU-018,VENDOR-6,Kids top,Pink,silk,free size,CHART-6,101
+SKU-019,VENDOR-1,Everyday kurti,,,,CHART-1,86
+SKU-020,VENDOR-2,Casual shirt,नीला,cotton,S,CHART-2,89
+SKU-021,VENDOR-3,Kids top,blu,cottn,medium,CHART-3,92
+SKU-022,VENDOR-4,Everyday kurti,Navy blue,100% cotton,M,CHART-4,95
+SKU-023,VENDOR-5,Casual shirt,Indigo,60% cotton / 40% polyester,2XL,CHART-5,98
+SKU-024,VENDOR-6,Kids top,Lal,linen,small,CHART-6,101
+SKU-025,VENDOR-1,Everyday kurti,blk,poly,XL,CHART-1,86
+SKU-026,VENDOR-2,Casual shirt,Green,viscose,large,CHART-2,89
+SKU-027,VENDOR-3,Kids top,mystery shade,premium soft material,38,CHART-3,92
+SKU-028,VENDOR-4,Everyday kurti,Pink,silk,free size,CHART-4,95
+SKU-029,VENDOR-5,Casual shirt,,,,CHART-5,98
+SKU-030,VENDOR-6,Kids top,नीला,cotton,S,CHART-6,101
+SKU-031,VENDOR-1,Everyday kurti,blu,cottn,medium,CHART-1,86
+SKU-032,VENDOR-2,Casual shirt,Navy blue,100% cotton,M,CHART-2,89
+SKU-033,VENDOR-3,Kids top,Indigo,60% cotton / 40% polyester,2XL,CHART-3,92
+SKU-034,VENDOR-4,Everyday kurti,Lal,linen,small,CHART-4,95
+SKU-035,VENDOR-5,Casual shirt,blk,poly,XL,CHART-5,98
+SKU-036,VENDOR-6,Kids top,Green,viscose,large,CHART-6,101
+SKU-037,VENDOR-1,Everyday kurti,mystery shade,premium soft material,38,CHART-1,86
+SKU-038,VENDOR-2,Casual shirt,Pink,silk,free size,CHART-2,89
+SKU-039,VENDOR-3,Kids top,,,,CHART-3,92
+SKU-040,VENDOR-4,Everyday kurti,नीला,cotton,S,CHART-4,95
+SKU-041,VENDOR-5,Casual shirt,blu,cottn,medium,CHART-5,98
+SKU-042,VENDOR-6,Kids top,Navy blue,100% cotton,M,CHART-6,101
+SKU-043,VENDOR-1,Everyday kurti,Indigo,60% cotton / 40% polyester,2XL,CHART-1,86
+SKU-044,VENDOR-2,Casual shirt,Lal,linen,small,CHART-2,89
+SKU-045,VENDOR-3,Kids top,blk,poly,XL,CHART-3,92
+SKU-046,VENDOR-4,Everyday kurti,Green,viscose,large,CHART-4,95
+SKU-047,VENDOR-5,Casual shirt,mystery shade,premium soft material,38,CHART-5,98
+SKU-048,VENDOR-6,Kids top,Pink,silk,free size,CHART-6,101
+SKU-049,VENDOR-1,Everyday kurti,,,,CHART-1,86
+SKU-050,VENDOR-2,Casual shirt,नीला,cotton,S,CHART-2,89
+SKU-051,VENDOR-3,Kids top,blu,cottn,medium,CHART-3,92
+SKU-052,VENDOR-4,Everyday kurti,Navy blue,100% cotton,M,CHART-4,95
+SKU-053,VENDOR-5,Casual shirt,Indigo,60% cotton / 40% polyester,2XL,CHART-5,98
+SKU-054,VENDOR-6,Kids top,Lal,linen,small,CHART-6,101
+SKU-055,VENDOR-1,Everyday kurti,blk,poly,XL,CHART-1,86
+SKU-056,VENDOR-2,Casual shirt,Green,viscose,large,CHART-2,89
+SKU-057,VENDOR-3,Kids top,mystery shade,premium soft material,38,CHART-3,92
+SKU-058,VENDOR-4,Everyday kurti,Pink,silk,free size,CHART-4,95
+SKU-059,VENDOR-5,Casual shirt,,,,CHART-5,98
+SKU-060,VENDOR-6,Kids top,नीला,cotton,S,CHART-6,101

@@ -1,0 +1,1 @@
+{"version":"0.2.0","configurations":[{"name":"Run Dhaga Streamlit","type":"debugpy","request":"launch","module":"streamlit","args":["run","app.py"],"console":"integratedTerminal","cwd":"${workspaceFolder}","envFile":"${workspaceFolder}/.env"}]}
